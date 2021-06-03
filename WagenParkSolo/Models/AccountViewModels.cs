@@ -79,6 +79,11 @@ namespace WagenParkSolo.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+        public string Klantnaam { get; set; }
+        public byte[] Rijbewijs { get; set; }
+        public string Adres { get; set; }
+        public string Woonplaats { get; set; }
+        public string Postcode { get; set; }
     }
 
     public class ResetPasswordViewModel

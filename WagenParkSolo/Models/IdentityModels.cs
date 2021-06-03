@@ -16,6 +16,11 @@ namespace WagenParkSolo.Models
             // Add custom user claims here
             return userIdentity;
         }
+        public string Klantnaam { get; set; }
+        public byte[] Rijbewijs { get; set; }
+        public string Adres { get; set; }
+        public string Woonplaats { get; set; }
+        public string Postcode { get; set; }
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
