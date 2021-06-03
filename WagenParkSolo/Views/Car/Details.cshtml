@@ -1,0 +1,75 @@
+﻿@model WagenParkSolo.Models.Auto
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Auto</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Merk)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Merk)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Kenteken)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Kenteken)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Model)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Model)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Brandstof)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Brandstof)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Kmstand)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Kmstand)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Kostperdag)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Kostperdag)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Foto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Foto)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Autonummer }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

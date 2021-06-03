@@ -1,0 +1,70 @@
+﻿@model IEnumerable<WagenParkSolo.Models.Auto>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Merk)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Kenteken)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Model)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Brandstof)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Kmstand)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Kostperdag)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Foto)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Merk)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Kenteken)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Model)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Brandstof)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Kmstand)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Kostperdag)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Foto)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Autonummer }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Autonummer }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Autonummer })
+        </td>
+    </tr>
+}
+
+</table>

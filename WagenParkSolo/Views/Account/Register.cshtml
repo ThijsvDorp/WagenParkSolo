@@ -24,7 +24,7 @@
         </div>
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.Klantnaam, new { @class = "col-md-2 control-label" })
+        @Html.Label("Naam", new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
             @Html.TextBoxFor(m => m.Klantnaam, new { @class = "form-control" })
         </div>
@@ -39,6 +39,12 @@
         @Html.LabelFor(m => m.Woonplaats, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
             @Html.TextBoxFor(m => m.Woonplaats, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Postcode, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Postcode, new { @class = "form-control" })
         </div>
     </div>
     <div class="form-group">

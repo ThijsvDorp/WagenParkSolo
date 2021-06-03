@@ -65,7 +65,7 @@
           <Key>
             <PropertyRef Name="Autonummer" />
           </Key>
-          <Property Name="Autonummer" Type="int" Nullable="false" />
+          <Property Name="Autonummer" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Merk" Type="nvarchar" MaxLength="25" />
           <Property Name="Kenteken" Type="nvarchar" MaxLength="25" />
           <Property Name="Model" Type="nvarchar" MaxLength="25" />
