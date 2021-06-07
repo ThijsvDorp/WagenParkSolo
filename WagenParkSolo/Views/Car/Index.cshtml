@@ -60,9 +60,10 @@
             @Html.DisplayFor(modelItem => item.Foto)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Autonummer }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Autonummer }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Autonummer })
+            @Html.ActionLink("Edit", "Edit", new { id = item.Autonummer }) |
+            @Html.ActionLink("Details", "Details", new { id = item.Autonummer }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.Autonummer }) |
+            @Html.ActionLink("Reserveer nu!", "Reserve","Reservation", new { id = item.Autonummer }, null)
         </td>
     </tr>
 }

@@ -34,5 +34,7 @@ namespace WagenParkSolo.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<WagenParkSolo.Models.Reservations> Reservations { get; set; }
     }
 }

@@ -32,5 +32,7 @@ namespace WagenParkSolo.Models
         public virtual DbSet<Auto> Autoes { get; set; }
         public virtual DbSet<Factuur> Factuurs { get; set; }
         public virtual DbSet<Factuurregel> Factuurregels { get; set; }
+
+        public System.Data.Entity.DbSet<WagenParkSolo.Models.Reservations> Reservations { get; set; }
     }
 }
