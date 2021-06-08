@@ -12,6 +12,8 @@ namespace WagenParkSolo.Models
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class WagenparkEntities : DbContext
     {
@@ -32,5 +34,14 @@ namespace WagenParkSolo.Models
         public virtual DbSet<Auto> Autoes { get; set; }
         public virtual DbSet<Factuur> Factuurs { get; set; }
         public virtual DbSet<Factuurregel> Factuurregels { get; set; }
+    
+        public virtual ObjectResult<spSelectReservations_Result> spSelectReservations(string loggedin)
+        {
+            var loggedinParameter = loggedin != null ?
+                new ObjectParameter("Loggedin", loggedin) :
+                new ObjectParameter("Loggedin", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spSelectReservations_Result>("spSelectReservations", loggedinParameter);
+        }
     }
 }

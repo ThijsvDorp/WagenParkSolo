@@ -10,17 +10,17 @@
 namespace WagenParkSolo.Models
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Factuurregel
+    public partial class spSelectReservations_Result
     {
+        public int Factuurnummer { get; set; }
+        public Nullable<System.DateTime> Factuurdatum { get; set; }
+        public string Klantnummer { get; set; }
         public Nullable<System.DateTime> Van { get; set; }
         public Nullable<System.DateTime> Tot { get; set; }
-        public int Autonummer { get; set; }
-        public int Factuurnummer { get; set; }
-        public int Factuurregelnummer { get; set; }
-    
-        public virtual Auto Auto { get; set; }
-        public virtual Factuur Factuur { get; set; }
+        public string Merk { get; set; }
+        public string Kenteken { get; set; }
+        public string Model { get; set; }
+        public Nullable<decimal> Kostperdag { get; set; }
     }
 }

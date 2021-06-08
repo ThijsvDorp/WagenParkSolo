@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using WagenParkSolo.Models;
 
@@ -24,8 +19,6 @@ namespace WagenParkSolo.Controllers
             model.Merk = reservation.Merk;
             model.Kenteken = reservation.Kenteken;
             model.Model = reservation.Model;
-            model.Van = DateTime.Now;
-            model.Tot = DateTime.Now;
             model.Kostperdag = reservation.Kostperdag;
             return View(model);
         }
@@ -33,11 +26,12 @@ namespace WagenParkSolo.Controllers
         public ActionResult Reserve(Reservations model, FormCollection collection, int id)
         {
 
-            //Maak een nieuwe factuurregel aan, met de gegevens die je van de frondend hebt gekregen!
+                //Maak een nieuwe factuurregel aan, met de gegevens die je van de frondend hebt gekregen!
                 Factuurregel reservations = new Factuurregel();
                 reservations.Van = Convert.ToDateTime(Request.Form["Van"]);
                 reservations.Tot = Convert.ToDateTime(Request.Form["Tot"]);
                 reservations.Autonummer = id;
+
                 //Maak een nieuwe factuur, en vul deze met gegevens!
                 Factuur factuur = new Factuur();
                 factuur.Klantnummer = this.User.Identity.Name;

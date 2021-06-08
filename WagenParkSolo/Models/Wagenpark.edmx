@@ -86,7 +86,7 @@
           <Key>
             <PropertyRef Name="Factuurregelnummer" />
           </Key>
-          <Property Name="Van" Type="date" Nullable="false" />
+          <Property Name="Van" Type="date" />
           <Property Name="Tot" Type="date" />
           <Property Name="Autonummer" Type="int" Nullable="false" />
           <Property Name="Factuurnummer" Type="int" Nullable="false" />
@@ -172,6 +172,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="spSelectReservations" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Loggedin" Type="nvarchar" Mode="In" />
+        </Function>
         <EntityContainer Name="WagenparkModelStoreContainer">
           <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
@@ -238,6 +241,9 @@
             <End Role="AspNetRole" EntitySet="AspNetRoles" />
             <End Role="AspNetUser" EntitySet="AspNetUsers" />
           </AssociationSet>
+          <FunctionImport Name="spSelectReservations" ReturnType="Collection(WagenparkModel.spSelectReservations_Result)">
+            <Parameter Name="Loggedin" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <EntityType Name="AspNetRole">
           <Key>
@@ -320,11 +326,11 @@
           <Key>
             <PropertyRef Name="Factuurregelnummer" />
           </Key>
-          <Property Name="Van" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Van" Type="DateTime" Precision="0" />
           <Property Name="Tot" Type="DateTime" Precision="0" />
           <Property Name="Autonummer" Type="Int32" Nullable="false" />
           <Property Name="Factuurnummer" Type="Int32" Nullable="false" />
-          <Property Name="Factuurregelnummer" Type="Int32" Nullable="false" />
+          <Property Name="Factuurregelnummer" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="Auto" Relationship="WagenparkModel.Factuurregel_Auto_FK" FromRole="Factuurregel" ToRole="Auto" />
           <NavigationProperty Name="Factuur" Relationship="WagenparkModel.Factuurregel_Factuur_FK" FromRole="Factuurregel" ToRole="Factuur" />
         </EntityType>
@@ -384,6 +390,17 @@
           <End Type="WagenparkModel.AspNetRole" Role="AspNetRole" Multiplicity="*" />
           <End Type="WagenparkModel.AspNetUser" Role="AspNetUser" Multiplicity="*" />
         </Association>
+        <ComplexType Name="spSelectReservations_Result">
+          <Property Type="Int32" Name="Factuurnummer" Nullable="false" />
+          <Property Type="DateTime" Name="Factuurdatum" Nullable="true" />
+          <Property Type="String" Name="Klantnummer" Nullable="false" MaxLength="128" />
+          <Property Type="DateTime" Name="Van" Nullable="true" />
+          <Property Type="DateTime" Name="Tot" Nullable="true" />
+          <Property Type="String" Name="Merk" Nullable="true" MaxLength="25" />
+          <Property Type="String" Name="Kenteken" Nullable="true" MaxLength="25" />
+          <Property Type="String" Name="Model" Nullable="true" MaxLength="25" />
+          <Property Type="Decimal" Name="Kostperdag" Nullable="true" Precision="6" Scale="2" />
+        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -482,6 +499,21 @@
               <ScalarProperty Name="Id" ColumnName="RoleId" />
             </EndProperty>
           </AssociationSetMapping>
+          <FunctionImportMapping FunctionImportName="spSelectReservations" FunctionName="WagenparkModel.Store.spSelectReservations">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="WagenparkModel.spSelectReservations_Result">
+                <ScalarProperty Name="Factuurnummer" ColumnName="Factuurnummer" />
+                <ScalarProperty Name="Factuurdatum" ColumnName="Factuurdatum" />
+                <ScalarProperty Name="Klantnummer" ColumnName="Klantnummer" />
+                <ScalarProperty Name="Van" ColumnName="Van" />
+                <ScalarProperty Name="Tot" ColumnName="Tot" />
+                <ScalarProperty Name="Merk" ColumnName="Merk" />
+                <ScalarProperty Name="Kenteken" ColumnName="Kenteken" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="Kostperdag" ColumnName="Kostperdag" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

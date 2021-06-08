@@ -205,6 +205,9 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\ReservationViewModels.cs" />
+    <Compile Include="Models\spSelectReservations_Result.cs">
+      <DependentUpon>Wagenpark.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Wagenpark.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -293,7 +296,7 @@
       <DependentUpon>Wagenpark.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.6.0.intellisense.js" />
-    <Content Include="Scripts\DatePickerReady.js" />
+    <Content Include="Scripts\DatePicker.js" />
     <Content Include="Scripts\jquery-3.6.0.js" />
     <Content Include="Scripts\jquery-3.6.0.min.js" />
     <Content Include="Scripts\jquery-3.6.0.slim.js" />
