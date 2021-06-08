@@ -36,5 +36,7 @@ namespace WagenParkSolo.Models
         }
 
         public System.Data.Entity.DbSet<WagenParkSolo.Models.Reservations> Reservations { get; set; }
+
+        public System.Data.Entity.DbSet<WagenParkSolo.Models.spNextDayOrders_Result> spNextDayOrders_Result { get; set; }
     }
 }

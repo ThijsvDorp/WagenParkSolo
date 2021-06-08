@@ -10,9 +10,11 @@
 namespace WagenParkSolo.Models
 {
     using System;
-    
-    public partial class spSelectReservations_Result
+    using System.ComponentModel.DataAnnotations;
+
+    public partial class spNextDayOrders_Result
     {
+        [Key]
         public int Factuurnummer { get; set; }
         public Nullable<System.DateTime> Factuurdatum { get; set; }
         public string Klantnummer { get; set; }

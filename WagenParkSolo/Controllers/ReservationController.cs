@@ -26,12 +26,13 @@ namespace WagenParkSolo.Controllers
         [HttpPost]
         public ActionResult Reserve(Reservations model, FormCollection collection, int id)
         {
-
+            
                 //Maak een nieuwe factuurregel aan, met de gegevens die je van de frondend hebt gekregen!
                 Factuurregel reservations = new Factuurregel();
                 reservations.Van = Convert.ToDateTime(Request.Form["Van"]);
                 reservations.Tot = Convert.ToDateTime(Request.Form["Tot"]);
                 reservations.Autonummer = id;
+                DateTime mindate = Convert.ToDateTime(Request.Form["Tot"]);
 
                 //Maak een nieuwe factuur, en vul deze met gegevens!
                 Factuur factuur = new Factuur();

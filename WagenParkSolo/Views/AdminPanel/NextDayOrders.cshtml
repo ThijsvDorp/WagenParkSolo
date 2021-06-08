@@ -1,0 +1,73 @@
+﻿@model IEnumerable<WagenParkSolo.Models.spNextDayOrders_Result>
+
+@{
+    ViewBag.Title = "Next Day Orders";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Orders van morgen!</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Factuurdatum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Klantnummer)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Van)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tot)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Merk)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Kenteken)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Model)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Kostperdag)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Factuurdatum)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Klantnummer)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Van)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tot)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Merk)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Kenteken)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Model)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Kostperdag)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Factuurnummer }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Factuurnummer }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Factuurnummer })
+        </td>
+    </tr>
+}
+
+</table>

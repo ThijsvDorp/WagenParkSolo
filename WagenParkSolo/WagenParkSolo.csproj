@@ -207,6 +207,9 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\ReservationViewModels.cs" />
+    <Compile Include="Models\spNextDayOrders_Result.cs">
+      <DependentUpon>Wagenpark.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\spSelectReservations_Result.cs">
       <DependentUpon>Wagenpark.tt</DependentUpon>
     </Compile>
@@ -354,10 +357,11 @@
     <Content Include="Views\Roles\Index.cshtml" />
     <Content Include="Views\Roles\Edit.cshtml" />
     <Content Include="Views\Reservation\Index.cshtml" />
+    <Content Include="Views\AdminPanel\Index.cshtml" />
+    <Content Include="Views\AdminPanel\NextDayOrders.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\AdminPanel\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

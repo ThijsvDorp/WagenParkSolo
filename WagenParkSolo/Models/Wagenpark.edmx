@@ -172,6 +172,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="spNextDayOrders" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="spSelectReservations" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Loggedin" Type="nvarchar" Mode="In" />
         </Function>
@@ -242,8 +243,9 @@
             <End Role="AspNetUser" EntitySet="AspNetUsers" />
           </AssociationSet>
           <FunctionImport Name="spSelectReservations" ReturnType="Collection(WagenparkModel.spSelectReservations_Result)">
-            <Parameter Name="Loggedin" Mode="In" Type="String" />
+          <Parameter Name="Loggedin" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="spNextDayOrders" ReturnType="Collection(WagenparkModel.spNextDayOrders_Result)" />
         </EntityContainer>
         <EntityType Name="AspNetRole">
           <Key>
@@ -401,6 +403,17 @@
           <Property Type="String" Name="Model" Nullable="true" MaxLength="25" />
           <Property Type="Decimal" Name="Kostperdag" Nullable="true" Precision="6" Scale="2" />
         </ComplexType>
+        <ComplexType Name="spNextDayOrders_Result">
+          <Property Type="Int32" Name="Factuurnummer" Nullable="false" />
+          <Property Type="DateTime" Name="Factuurdatum" Nullable="true" />
+          <Property Type="String" Name="Klantnummer" Nullable="false" MaxLength="128" />
+          <Property Type="DateTime" Name="Van" Nullable="true" />
+          <Property Type="DateTime" Name="Tot" Nullable="true" />
+          <Property Type="String" Name="Merk" Nullable="true" MaxLength="25" />
+          <Property Type="String" Name="Kenteken" Nullable="true" MaxLength="25" />
+          <Property Type="String" Name="Model" Nullable="true" MaxLength="25" />
+          <Property Type="Decimal" Name="Kostperdag" Nullable="true" Precision="6" Scale="2" />
+        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -502,6 +515,21 @@
           <FunctionImportMapping FunctionImportName="spSelectReservations" FunctionName="WagenparkModel.Store.spSelectReservations">
             <ResultMapping>
               <ComplexTypeMapping TypeName="WagenparkModel.spSelectReservations_Result">
+                <ScalarProperty Name="Factuurnummer" ColumnName="Factuurnummer" />
+                <ScalarProperty Name="Factuurdatum" ColumnName="Factuurdatum" />
+                <ScalarProperty Name="Klantnummer" ColumnName="Klantnummer" />
+                <ScalarProperty Name="Van" ColumnName="Van" />
+                <ScalarProperty Name="Tot" ColumnName="Tot" />
+                <ScalarProperty Name="Merk" ColumnName="Merk" />
+                <ScalarProperty Name="Kenteken" ColumnName="Kenteken" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="Kostperdag" ColumnName="Kostperdag" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spNextDayOrders" FunctionName="WagenparkModel.Store.spNextDayOrders">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="WagenparkModel.spNextDayOrders_Result">
                 <ScalarProperty Name="Factuurnummer" ColumnName="Factuurnummer" />
                 <ScalarProperty Name="Factuurdatum" ColumnName="Factuurdatum" />
                 <ScalarProperty Name="Klantnummer" ColumnName="Klantnummer" />

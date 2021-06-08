@@ -24,6 +24,14 @@
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("Catalogus", "Index", "Car")</li>
                     <li>@Html.ActionLink("Mijn reserveringen", "Index", "Reservation")</li>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <li>@Html.ActionLink("Adminpanel", "Index", "AdminPanel")</li>
+                    }
+                    @if (User.IsInRole("Employee"))
+                    {
+                        <li>@Html.ActionLink("Employeepanel", "Index", "AdminPanel")</li>
+                    }
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

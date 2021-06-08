@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "Admin Panel";
+}
+@if (User.IsInRole("Admin"))
+{
+    <h2>Admin Panel</h2>
+}
+else
+{
+    <h2>Employee Panel</h2>
+}
+
+<div class="row">
+    <div class="col-md-4">
+        <h3>Role Manager Page</h3>
+        <p>Create, Delete or Edit roles</p>
+        <a class="btn btn-warning" href="~/Roles/Index">RoleManager &raquo;</a>
+    </div>
+    <div class="col-md-4">
+        <h3>Catalogus</h3>
+        <p>Create, Delete or Edit Cars</p>
+        <a class="btn btn-warning" href="~/Car/Index">Car Page &raquo;</a>
+    </div>
+    <div class="col-md-4">
+        <h3>Next day orders</h3>
+        <p>View the orders for the next day</p>
+        <a class="btn btn-warning" href="~/AdminPanel/NextDayOrders">NDO &raquo;</a>
+    </div>
+</div>
