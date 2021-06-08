@@ -17,7 +17,8 @@ namespace WagenParkSolo.Models
         public System.DateTime Van { get; set; }
         public Nullable<System.DateTime> Tot { get; set; }
         public int Autonummer { get; set; }
-        public string Factuurnummer { get; set; }
+        public int Factuurnummer { get; set; }
+        public int Factuurregelnummer { get; set; }
     
         public virtual Auto Auto { get; set; }
         public virtual Factuur Factuur { get; set; }

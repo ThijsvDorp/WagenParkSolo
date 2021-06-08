@@ -78,19 +78,19 @@
           <Key>
             <PropertyRef Name="Factuurnummer" />
           </Key>
-          <Property Name="Factuurnummer" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Factuurnummer" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Factuurdatum" Type="date" />
           <Property Name="Klantnummer" Type="nvarchar" MaxLength="128" Nullable="false" />
         </EntityType>
         <EntityType Name="Factuurregel">
           <Key>
-            <PropertyRef Name="Van" />
-            <PropertyRef Name="Autonummer" />
+            <PropertyRef Name="Factuurregelnummer" />
           </Key>
           <Property Name="Van" Type="date" Nullable="false" />
           <Property Name="Tot" Type="date" />
           <Property Name="Autonummer" Type="int" Nullable="false" />
-          <Property Name="Factuurnummer" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Factuurnummer" Type="int" Nullable="false" />
+          <Property Name="Factuurregelnummer" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
         <Association Name="Factuurregel_Auto_FK">
           <End Role="Auto" Type="Self.Auto" Multiplicity="1" />
@@ -172,18 +172,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Factuur_AspNetUsers">
-          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
-          <End Role="Factuur" Type="Self.Factuur" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AspNetUsers">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Factuur">
-              <PropertyRef Name="Klantnummer" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="WagenparkModelStoreContainer">
           <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
@@ -217,10 +205,6 @@
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
           </AssociationSet>
-          <AssociationSet Name="FK_Factuur_AspNetUsers" Association="Self.FK_Factuur_AspNetUsers">
-            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-            <End Role="Factuur" EntitySet="Factuur" />
-          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -241,10 +225,6 @@
           <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="WagenparkModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
             <End Role="AspNetUser" EntitySet="AspNetUsers" />
             <End Role="AspNetUserLogin" EntitySet="AspNetUserLogins" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Factuur_AspNetUsers" Association="WagenparkModel.FK_Factuur_AspNetUsers">
-            <End Role="AspNetUser" EntitySet="AspNetUsers" />
-            <End Role="Factuur" EntitySet="Factuurs" />
           </AssociationSet>
           <AssociationSet Name="Factuurregel_Auto_FK" Association="WagenparkModel.Factuurregel_Auto_FK">
             <End Role="Auto" EntitySet="Autoes" />
@@ -311,14 +291,13 @@
           <Property Name="Postcode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="AspNetUserClaims" Relationship="WagenparkModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserClaim" />
           <NavigationProperty Name="AspNetUserLogins" Relationship="WagenparkModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserLogin" />
-          <NavigationProperty Name="Factuurs" Relationship="WagenparkModel.FK_Factuur_AspNetUsers" FromRole="AspNetUser" ToRole="Factuur" />
           <NavigationProperty Name="AspNetRoles" Relationship="WagenparkModel.AspNetUserRoles" FromRole="AspNetUser" ToRole="AspNetRole" />
         </EntityType>
         <EntityType Name="Auto">
           <Key>
             <PropertyRef Name="Autonummer" />
           </Key>
-          <Property Name="Autonummer" Type="Int32" Nullable="false" />
+          <Property Name="Autonummer" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Merk" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
           <Property Name="Kenteken" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
           <Property Name="Model" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
@@ -332,21 +311,20 @@
           <Key>
             <PropertyRef Name="Factuurnummer" />
           </Key>
-          <Property Name="Factuurnummer" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Factuurnummer" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Factuurdatum" Type="DateTime" Precision="0" />
           <Property Name="Klantnummer" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="AspNetUser" Relationship="WagenparkModel.FK_Factuur_AspNetUsers" FromRole="Factuur" ToRole="AspNetUser" />
           <NavigationProperty Name="Factuurregels" Relationship="WagenparkModel.Factuurregel_Factuur_FK" FromRole="Factuur" ToRole="Factuurregel" />
         </EntityType>
         <EntityType Name="Factuurregel">
           <Key>
-            <PropertyRef Name="Van" />
-            <PropertyRef Name="Autonummer" />
+            <PropertyRef Name="Factuurregelnummer" />
           </Key>
           <Property Name="Van" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Tot" Type="DateTime" Precision="0" />
           <Property Name="Autonummer" Type="Int32" Nullable="false" />
-          <Property Name="Factuurnummer" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Factuurnummer" Type="Int32" Nullable="false" />
+          <Property Name="Factuurregelnummer" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Auto" Relationship="WagenparkModel.Factuurregel_Auto_FK" FromRole="Factuurregel" ToRole="Auto" />
           <NavigationProperty Name="Factuur" Relationship="WagenparkModel.Factuurregel_Factuur_FK" FromRole="Factuurregel" ToRole="Factuur" />
         </EntityType>
@@ -375,18 +353,6 @@
             </Principal>
             <Dependent Role="AspNetUserLogin">
               <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Factuur_AspNetUsers">
-          <End Type="WagenparkModel.AspNetUser" Role="AspNetUser" Multiplicity="1" />
-          <End Type="WagenparkModel.Factuur" Role="Factuur" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AspNetUser">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Factuur">
-              <PropertyRef Name="Klantnummer" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -500,6 +466,7 @@
           <EntitySetMapping Name="Factuurregels">
             <EntityTypeMapping TypeName="WagenparkModel.Factuurregel">
               <MappingFragment StoreEntitySet="Factuurregel">
+                <ScalarProperty Name="Factuurregelnummer" ColumnName="Factuurregelnummer" />
                 <ScalarProperty Name="Factuurnummer" ColumnName="Factuurnummer" />
                 <ScalarProperty Name="Autonummer" ColumnName="Autonummer" />
                 <ScalarProperty Name="Tot" ColumnName="Tot" />

@@ -20,11 +20,10 @@ namespace WagenParkSolo.Models
             this.Factuurregels = new HashSet<Factuurregel>();
         }
     
-        public string Factuurnummer { get; set; }
+        public int Factuurnummer { get; set; }
         public Nullable<System.DateTime> Factuurdatum { get; set; }
         public string Klantnummer { get; set; }
     
-        public virtual AspNetUser AspNetUser { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Factuurregel> Factuurregels { get; set; }
     }
