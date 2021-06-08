@@ -43,5 +43,7 @@ namespace WagenParkSolo.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spSelectReservations_Result>("spSelectReservations", loggedinParameter);
         }
+
+        public System.Data.Entity.DbSet<WagenParkSolo.Models.spSelectReservations_Result> spSelectReservations_Result { get; set; }
     }
 }

@@ -4,13 +4,14 @@ using WagenParkSolo.Models;
 
 namespace WagenParkSolo.Controllers
 {
+    [Authorize(Roles ="User,Admin,Employee")]
     public class ReservationController : Controller
     {
         WagenparkEntities db = new WagenparkEntities();
         // GET: Reservation
         public ActionResult Index()
         {
-            return View();
+            return View(db.spSelectReservations(this.User.Identity.Name));
         }
         public ActionResult Reserve(int id, Reservations model)
         {
