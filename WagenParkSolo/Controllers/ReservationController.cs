@@ -24,7 +24,9 @@ namespace WagenParkSolo.Controllers
             model.Merk = reservation.Merk;
             model.Kenteken = reservation.Kenteken;
             model.Model = reservation.Model;
-            model.Tot = model.Tot;
+            model.Van = DateTime.Now;
+            model.Tot = DateTime.Now;
+            model.Kostperdag = reservation.Kostperdag;
             return View(model);
         }
         [HttpPost]

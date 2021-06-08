@@ -15,5 +15,6 @@ namespace WagenParkSolo.Models
         public string Model { get; set; }
         public System.DateTime Van { get; set; }
         public Nullable<System.DateTime> Tot { get; set; }
+        public Nullable<decimal> Kostperdag { get; set; }
     }
 }
