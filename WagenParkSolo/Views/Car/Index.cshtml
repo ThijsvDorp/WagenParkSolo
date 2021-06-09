@@ -62,15 +62,15 @@
         <td>
             @if (User.IsInRole("Admin") | User.IsInRole("Employee"))
             {
-                @Html.ActionLink(" Edit", "Edit", new { id = item.Autonummer }) 
-                @Html.ActionLink(" Details", "Details", new { id = item.Autonummer }) 
-                @Html.ActionLink(" Delete", "Delete", new { id = item.Autonummer }) 
+                @Html.ActionLink(" Edit", "Edit", new { id = item.Autonummer })
+                @Html.ActionLink(" Details", "Details", new { id = item.Autonummer })
+                @Html.ActionLink(" Delete", "Delete", new { id = item.Autonummer })
             }
             @if (User.IsInRole("User") | User.IsInRole("Admin") | User.IsInRole("Employee"))
             {
-
-            }
                 @Html.ActionLink(" Reserveer nu!", "Reserve", "Reservation", new { id = item.Autonummer }, null)
+            }
+
 
 
         </td>

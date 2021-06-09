@@ -49,6 +49,9 @@
             @Html.LabelFor(model => model.Tot, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Tot, new { htmlAttributes = new { @class = "datepicker", @placeholder = "Kies een einddatum.", @autocomplete="off" } })
+                {
+
+                }
                 @Html.ValidationMessageFor(model => model.Tot, "", new { @class = "text-danger" })
             </div>
         </div>
